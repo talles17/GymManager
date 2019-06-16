@@ -12,15 +12,16 @@ import javax.swing.JLabel;
 
 import dao.FuncionarioDAO;
 import model.Funcionario;
+import java.awt.Font;
 public class Login {
 
 	private JFrame frame;
-	private JTextField usuario;
-	private JPasswordField senha;
 	
 	private FuncionarioDAO p = new FuncionarioDAO();
 	private static Login login;
 	private static MenuProfessor mp;
+	private JTextField txtLogin;
+	private JPasswordField pwdSenha;
 	
 	/**
 	 * Launch the application.
@@ -52,39 +53,36 @@ public class Login {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 425);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		usuario = new JTextField();
-		usuario.setToolTipText("");
-		usuario.setBounds(123, 168, 202, 20);
-		frame.getContentPane().add(usuario);
-		usuario.setColumns(10);
+		txtLogin = new JTextField();
+		txtLogin.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtLogin.setBounds(130, 95, 233, 25);
+		frame.getContentPane().add(txtLogin);
+		txtLogin.setColumns(10);
 		
-		senha = new JPasswordField();
-		senha.setBounds(123, 230, 202, 20);
-		frame.getContentPane().add(senha);
+		pwdSenha = new JPasswordField();
+		pwdSenha.setBounds(130, 141, 233, 25);
+		frame.getContentPane().add(pwdSenha);
 		
-		JButton buttonEntrar = new JButton("Entrar");
-		buttonEntrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//if(checkLogin(usuario.getText(), new String(senha.getPassword()))) {
-					login.frame.setVisible(false);
-					mp.frame.setVisible(true);
-				//}
-			}
-		});
-		buttonEntrar.setBounds(182, 298, 89, 23);
-		frame.getContentPane().add(buttonEntrar);
+		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblLogin.setBounds(80, 95, 47, 25);
+		frame.getContentPane().add(lblLogin);
 		
-		JLabel lblUsurio = new JLabel("Usu\u00E1rio");
-		lblUsurio.setBounds(123, 134, 69, 20);
-		frame.getContentPane().add(lblUsurio);
+		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblSenha.setBounds(80, 141, 47, 25);
+		frame.getContentPane().add(lblSenha);
 		
-		JLabel lblNewLabel = new JLabel("Senha");
-		lblNewLabel.setBounds(125, 199, 67, 20);
-		frame.getContentPane().add(lblNewLabel);
+		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.setBounds(194, 177, 89, 23);
+		frame.getContentPane().add(btnEntrar);
+		
+		JLabel lblGymManager = new JLabel("Gym Manager");
+		lblGymManager.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblGymManager.setBounds(167, 26, 147, 36);
+		frame.getContentPane().add(lblGymManager);
 		
 	
 	}
