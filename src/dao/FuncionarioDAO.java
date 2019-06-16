@@ -1,7 +1,6 @@
 package dao;
 
 import java.util.LinkedList;
-
 import model.Funcionario;
 
 public class FuncionarioDAO {
@@ -20,12 +19,5 @@ public class FuncionarioDAO {
 		return professores;
 	}
 	
-/*	public Funcionario getProfessorByLogin(String login) {
-		for(Funcionario p : professores) {
-			if(p.getLogin().equals(login)) {
-				return p;
-			}
-		}
-		return null;
-	}*/
+	
 }

@@ -7,6 +7,11 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MenuProfessor {
 
@@ -40,25 +45,45 @@ public class MenuProfessor {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 106);
+		frame.setAlwaysOnTop(true);
+		frame.setBounds(100, 100, 630, 550);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 434, 74);
+		panel.setBounds(0, 0, 614, 512);
 		frame.getContentPane().add(panel);
+		panel.setLayout(null);
 		
-		JButton buttonFrequencia = new JButton("Frequencia");
-		buttonFrequencia.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		panel.add(buttonFrequencia);
-		
-		JButton buttonTreinos = new JButton("Treinos");
+		JButton buttonTreinos = new JButton("Visualizar treinos");
+		buttonTreinos.setBounds(245, 115, 120, 23);
 		panel.add(buttonTreinos);
 		
 		JButton buttonCriarTreino = new JButton("Criar Treino");
+		buttonCriarTreino.setBounds(245, 144, 120, 23);
 		panel.add(buttonCriarTreino);
 		
-		JButton buttonCriarExercicio = new JButton("Cria exerc\u00EDcio");
-		panel.add(buttonCriarExercicio);
+		JButton btnAlunos = new JButton("Lista de Alunos");
+		btnAlunos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnAlunos.setBounds(245, 170, 120, 23);
+		panel.add(btnAlunos);
+		
+		JLabel lblGymManager = new JLabel("Gym Manager");
+		lblGymManager.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblGymManager.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGymManager.setBounds(221, 37, 165, 27);
+		panel.add(lblGymManager);
+		
+		JButton btnMatricularAluno = new JButton("Matricular Aluno");
+		btnMatricularAluno.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new TelaAlunoCadastro().setVisible(true);
+			}
+		});
+		btnMatricularAluno.setBounds(245, 197, 120, 23);
+		panel.add(btnMatricularAluno);
 	}
 }
