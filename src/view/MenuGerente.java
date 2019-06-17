@@ -72,6 +72,12 @@ public class MenuGerente {
 		mnModalidade.add(mntmCadastrarModalidade);
 		
 		JMenuItem mntmViasualizarModalidades = new JMenuItem("Viasualizar Modalidades");
+		mntmViasualizarModalidades.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new ListaModalidades().frame.setVisible(true);
+				frame.dispose();
+			}
+		});
 		mnModalidade.add(mntmViasualizarModalidades);
 		
 		JMenuItem mntmRemoverMensalidaddes = new JMenuItem("Remover Modalidades");
