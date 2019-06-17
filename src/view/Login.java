@@ -20,9 +20,7 @@ public class Login {
 
 	private JFrame frmGymManagerLogin;
 	
-	private FuncionarioDAO p = new FuncionarioDAO();
 	private static Login login;
-	private static MenuProfessor mp;
 	private JTextField txtLogin;
 	private JPasswordField pwdSenha;
 	
@@ -35,8 +33,7 @@ public class Login {
 				try {
 					
 					login = new Login();
-					mp = new MenuProfessor();
-					login.frmGymManagerLogin.setVisible(true);
+					login.getFrmGymManagerLogin().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,15 +52,15 @@ public class Login {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmGymManagerLogin = new JFrame();
-		frmGymManagerLogin.setTitle("Gym Manager Login");
-		frmGymManagerLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmGymManagerLogin.setSize(500,400);
-		frmGymManagerLogin.getContentPane().setLayout(null);
+		setFrmGymManagerLogin(new JFrame());
+		getFrmGymManagerLogin().setTitle("Gym Manager Login");
+		getFrmGymManagerLogin().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrmGymManagerLogin().setSize(500,400);
+		getFrmGymManagerLogin().getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 482, 364);
-		frmGymManagerLogin.getContentPane().add(panel);
+		getFrmGymManagerLogin().getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		txtLogin = new JTextField();
@@ -103,10 +100,10 @@ public class Login {
 				
 				if(FuncionarioDAO.getNomeCargo(credencial.getMatricula()).equals("Instrutor")) {
 					new MenuProfessor().frame.setVisible(true);
-					frmGymManagerLogin.dispose();
+					getFrmGymManagerLogin().dispose();
 				}else {
-					new MenuGerente().setVisible(true);
-					frmGymManagerLogin.dispose();
+					new MenuGerente().frame.setVisible(true);
+					getFrmGymManagerLogin().dispose();
 				}
 			
 			}else {
@@ -120,13 +117,12 @@ public class Login {
 		
 	
 	}
-	
-	
-	
-	
-	private static class __Tmp {
-		private static void __tmp() {
-			  new javax.swing.JPanel();
-		}
+
+	public JFrame getFrmGymManagerLogin() {
+		return frmGymManagerLogin;
+	}
+
+	public void setFrmGymManagerLogin(JFrame frmGymManagerLogin) {
+		this.frmGymManagerLogin = frmGymManagerLogin;
 	}
 }

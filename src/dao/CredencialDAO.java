@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 
 import conexao.ConexaoComBD;
 import model.Credencial;
-import model.Funcionario;
 
 public class CredencialDAO {
 	

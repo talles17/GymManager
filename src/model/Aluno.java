@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Date;
-
 public class Aluno {
 	
 	private int matricula;
@@ -9,13 +7,16 @@ public class Aluno {
 	private String nome;
 	private String sobrenome;
 	private String sexo;
-	private Date data_nascimento;
+	private String data_nascimento;
 	private boolean status_matricula;
 	private String objetivo;
 	private String anamnese;
 	
+	public Aluno() {
+		
+	}
 	public Aluno(int matricula, String cpf, String nome, String sobrenome,
-			String sexo, Date data_nascimento, boolean status_matricula, 
+			String sexo, String data_nascimento, boolean status_matricula, 
 			String objetivo, String anamnese) {
 		
 		this.matricula = matricula;
@@ -74,11 +75,11 @@ public class Aluno {
 		this.sexo = sexo;
 	}
 
-	public Date getData_nascimento() {
+	public String getData_nascimento() {
 		return data_nascimento;
 	}
 
-	public void setData_nascimento(Date data_nascimento) {
+	public void setData_nascimento(String data_nascimento) {
 		this.data_nascimento = data_nascimento;
 	}
 

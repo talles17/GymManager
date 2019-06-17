@@ -1,18 +1,13 @@
 package gymmanager.main;
 
-import java.sql.SQLException;
-import java.util.List;
-
-import dao.AlunoDAO;
-import dao.FuncionarioDAO;
-import model.Aluno;
-import util.Util;
+import view.Login;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		Util.geradorDeMatricula();
+		Login login = new Login();
+		login.getFrmGymManagerLogin().setVisible(true);
 			
 		
 		

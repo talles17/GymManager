@@ -46,6 +46,7 @@ public class MenuProfessor {
 		frame.setAlwaysOnTop(true);
 		frame.setBounds(100, 100, 630, 550);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(650,400);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -54,25 +55,23 @@ public class MenuProfessor {
 		panel.setLayout(null);
 		
 		JButton buttonTreinos = new JButton("Visualizar treinos");
-		buttonTreinos.setBounds(245, 115, 120, 23);
+		buttonTreinos.setBounds(224, 136, 186, 23);
 		panel.add(buttonTreinos);
-		
-		JButton buttonCriarTreino = new JButton("Criar Treino");
-		buttonCriarTreino.setBounds(245, 144, 120, 23);
-		panel.add(buttonCriarTreino);
 		
 		JButton btnAlunos = new JButton("Lista de Alunos");
 		btnAlunos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				new ListaDeAlunos().frame.setVisible(true);
+				frame.dispose();
 			}
 		});
-		btnAlunos.setBounds(245, 170, 120, 23);
+		btnAlunos.setBounds(224, 163, 186, 23);
 		panel.add(btnAlunos);
 		
 		JLabel lblGymManager = new JLabel("Gym Manager");
 		lblGymManager.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblGymManager.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGymManager.setBounds(247, 37, 165, 27);
+		lblGymManager.setBounds(220, 46, 165, 27);
 		panel.add(lblGymManager);
 		
 		JButton btnMatricularAluno = new JButton("Matricular Aluno");
@@ -82,7 +81,7 @@ public class MenuProfessor {
 				frame.dispose();
 			}
 		});
-		btnMatricularAluno.setBounds(245, 197, 120, 23);
+		btnMatricularAluno.setBounds(224, 192, 186, 23);
 		panel.add(btnMatricularAluno);
 	}
 }

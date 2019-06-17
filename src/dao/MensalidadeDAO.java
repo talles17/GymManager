@@ -5,14 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 
 import conexao.ConexaoComBD;
-import model.Exercicio;
 import model.Mensalidade;
+import util.Util;
 
 public class MensalidadeDAO {
 
