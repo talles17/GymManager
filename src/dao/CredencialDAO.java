@@ -10,7 +10,7 @@ import model.Credencial;
 
 public class CredencialDAO {
 	
-	
+	private Integer matricula;
 	
 	public void cadastrarCredencial(Credencial credencial) {
 		Connection conexao = ConexaoComBD.getConnection();
@@ -49,7 +49,7 @@ public class CredencialDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			if(rs.next()) {
-				
+				this.matricula = rs.getInt(2); 
 				return true;
 			}else {
 				return false;
@@ -63,5 +63,8 @@ public class CredencialDAO {
 		return false;
 	}
 	
+	public Integer getMatricula() {
+		return this.matricula;
+	}
 	
 }

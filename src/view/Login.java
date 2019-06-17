@@ -101,7 +101,13 @@ public class Login {
 				
 			if(credencial.loginCheck(txtLogin.getText(),new String (pwdSenha.getPassword()))){
 				
-				JOptionPane.showMessageDialog(null,"Bem-Vindo");
+				if(FuncionarioDAO.getNomeCargo(credencial.getMatricula()).equals("Instrutor")) {
+					new MenuProfessor().frame.setVisible(true);
+					frmGymManagerLogin.dispose();
+				}else {
+					new MenuGerente().setVisible(true);
+					frmGymManagerLogin.dispose();
+				}
 			
 			}else {
 			

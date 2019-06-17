@@ -79,6 +79,7 @@ public class MenuProfessor {
 		btnMatricularAluno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new TelaAlunoCadastro().setVisible(true);
+				frame.dispose();
 			}
 		});
 		btnMatricularAluno.setBounds(245, 197, 120, 23);

@@ -68,7 +68,7 @@ public class FuncionarioDAO {
 		return listaFuncionarios;
 		
 	}
-	public String getNomeCargo(Integer matricula ) {
+	public static String getNomeCargo(Integer matricula ) {
 		String sql = "SELECT c.nome FROM funcionario f JOIN cargo_funcionario c ON f.id_cargo = c.id_cargo WHERE f.matricula = ?";
 		Connection conexao = ConexaoComBD.getConnection();
 		PreparedStatement stmt = null;
