@@ -10,8 +10,6 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class MenuProfessor {
 
@@ -74,7 +72,7 @@ public class MenuProfessor {
 		JLabel lblGymManager = new JLabel("Gym Manager");
 		lblGymManager.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblGymManager.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGymManager.setBounds(221, 37, 165, 27);
+		lblGymManager.setBounds(247, 37, 165, 27);
 		panel.add(lblGymManager);
 		
 		JButton btnMatricularAluno = new JButton("Matricular Aluno");

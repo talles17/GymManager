@@ -16,4 +16,45 @@ public class Credencial {
 		this.senha = senha;
 	}
 
+
+	public int getId_credencial() {
+		return id_credencial;
+	}
+
+
+	public void setId_credencial(int id_credencial) {
+		this.id_credencial = id_credencial;
+	}
+
+
+	public int getFuncionario_matricula() {
+		return funcionario_matricula;
+	}
+
+
+	public void setFuncionario_matricula(int funcionario_matricula) {
+		this.funcionario_matricula = funcionario_matricula;
+	}
+
+
+	public String getLogin() {
+		return login;
+	}
+
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+
 }

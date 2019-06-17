@@ -4,18 +4,21 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
+import dao.CredencialDAO;
 import dao.FuncionarioDAO;
-import model.Funcionario;
 import java.awt.Font;
+import javax.swing.JPanel;
 public class Login {
 
-	private JFrame frame;
+	private JFrame frmGymManagerLogin;
 	
 	private FuncionarioDAO p = new FuncionarioDAO();
 	private static Login login;
@@ -33,7 +36,7 @@ public class Login {
 					
 					login = new Login();
 					mp = new MenuProfessor();
-					login.frame.setVisible(true);
+					login.frmGymManagerLogin.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -52,60 +55,72 @@ public class Login {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setLayout(null);
+		frmGymManagerLogin = new JFrame();
+		frmGymManagerLogin.setTitle("Gym Manager Login");
+		frmGymManagerLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmGymManagerLogin.setSize(500,400);
+		frmGymManagerLogin.getContentPane().setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 482, 364);
+		frmGymManagerLogin.getContentPane().add(panel);
+		panel.setLayout(null);
 		
 		txtLogin = new JTextField();
+		txtLogin.setBounds(165, 155, 168, 23);
+		panel.add(txtLogin);
 		txtLogin.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtLogin.setBounds(130, 95, 233, 25);
-		frame.getContentPane().add(txtLogin);
 		txtLogin.setColumns(10);
 		
 		pwdSenha = new JPasswordField();
-		pwdSenha.setBounds(130, 141, 233, 25);
-		frame.getContentPane().add(pwdSenha);
+		pwdSenha.setBounds(165, 196, 168, 20);
+		panel.add(pwdSenha);
 		
 		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setBounds(117, 158, 38, 17);
+		panel.add(lblLogin);
 		lblLogin.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblLogin.setBounds(80, 95, 47, 25);
-		frame.getContentPane().add(lblLogin);
 		
 		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setBounds(117, 196, 43, 17);
+		panel.add(lblSenha);
 		lblSenha.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblSenha.setBounds(80, 141, 47, 25);
-		frame.getContentPane().add(lblSenha);
 		
 		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setBounds(194, 177, 89, 23);
-		frame.getContentPane().add(btnEntrar);
+		btnEntrar.setBounds(195, 259, 111, 23);
+		panel.add(btnEntrar);
 		
 		JLabel lblGymManager = new JLabel("Gym Manager");
+		lblGymManager.setBounds(170, 67, 136, 27);
+		panel.add(lblGymManager);
 		lblGymManager.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblGymManager.setBounds(167, 26, 147, 36);
-		frame.getContentPane().add(lblGymManager);
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				CredencialDAO credencial = new CredencialDAO();
+				
+			if(credencial.loginCheck(txtLogin.getText(),new String (pwdSenha.getPassword()))){
+				
+				JOptionPane.showMessageDialog(null,"Bem-Vindo");
+			
+			}else {
+			
+				JOptionPane.showMessageDialog(null,"Not this Time");
+			}
+					
+				
+			}
+		});
 		
 	
 	}
 	
 	
-	/*public boolean checkLogin (String usuario, String senha) {
-		for(Funcionario prof : p.getProfessores()) {
-			if(prof.getLogin().equals(usuario)) {
-				if(prof.getSenha().equals(senha)) {
-					return true;
-				}
-				else {
-					return false;
-				}
-			}
-		}
-		return false;
-	}*/
 	
 	
 	private static class __Tmp {
 		private static void __tmp() {
-			  javax.swing.JPanel __wbp_panel = new javax.swing.JPanel();
+			  new javax.swing.JPanel();
 		}
 	}
 }

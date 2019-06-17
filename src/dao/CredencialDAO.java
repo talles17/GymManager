@@ -4,43 +4,64 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import conexao.ConexaoComBD;
+import model.Credencial;
 
 public class CredencialDAO {
+	
+	
+	
+	public void cadastrarCredencial(Credencial credencial) {
+		Connection conexao = ConexaoComBD.getConnection();
+		PreparedStatement stmt = null;
+
+        try {
+            stmt = conexao.prepareStatement("INSERT INTO credencial (funcionario_matricula,login,senha)VALUES(?,?,?)");
+            stmt.setInt(1, credencial.getFuncionario_matricula());
+            stmt.setString(2, credencial.getLogin());
+            stmt.setString(3,credencial.getSenha());
+
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            ConexaoComBD.closeConnection(conexao, stmt);
+        }
+
+		
+	}
 
 	
 	public boolean loginCheck(String login, String senha) {
 
-        Connection con = ConexaoComBD.getConnection();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        boolean check = false;
-
-        try {
-
-            stmt = con.prepareStatement("SELECT * FROM crendencial WHERE login = ? and senha = ?");
-            stmt.setString(1, login);
-            stmt.setString(2, senha);
-
-            rs = stmt.executeQuery();
-
-            if (rs.next()) {
-
-                
-                check = true;
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            ConexaoComBD.closeConnection(con, stmt, rs);
-        }
-
-        return check;
-
-    }
+		Connection conexao = ConexaoComBD.getConnection();
+		PreparedStatement stmt = null;
+		String sql = "SELECT * FROM credencial WHERE login = ? AND senha = ?;";
+		
+		try {
+			
+			stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, login);
+			stmt.setString(2, senha);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				return true;
+			}else {
+				return false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			ConexaoComBD.closeConnection(conexao, stmt);
+		}
+		return false;
+	}
+	
+	
 }

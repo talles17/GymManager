@@ -4,14 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import com.mysql.cj.protocol.Resultset;
-
 import conexao.ConexaoComBD;
 import model.Aluno;
+import util.Util;
 
 public class AlunoDAO {
 
@@ -22,7 +22,7 @@ public class AlunoDAO {
 
         try {
             stmt = conexao.prepareStatement("INSERT INTO aluno (matricula, cpf, nome, sobrenome, sexo, data_nascimento, status_matricula, objetivo, anamnese)VALUES(?,?,?,?,?,?,?,?,?)");
-            stmt.setInt(1, aluno.getMatricula());
+            stmt.setInt(1, Util.geradorDeMatricula());
             stmt.setString(2, aluno.getCpf());
             stmt.setString(3, aluno.getNome());
             stmt.setString(4, aluno.getSobrenome());
@@ -46,19 +46,18 @@ public class AlunoDAO {
 	}
 	
 	
-	public Aluno getByMatricula(int matricula) throws SQLException {
+	public List<Aluno> getByMatricula() throws SQLException {
 	
-		String sql = "SELECT matricula,nome,sobrenome FROM aluno WHERE matricula = ? ";
+		String sql = "SELECT * FROM aluno";
 		Connection conexao = ConexaoComBD.getConnection();
 		PreparedStatement stmt = null;
-		
-
+		List<Aluno> listaAlunos = new ArrayList<>();
         try {
             stmt = conexao.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            stmt.setInt(1, matricula);
-            Aluno aluno = new Aluno(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDate(6),rs.getBoolean(7),rs.getString(8),rs.getString(9));
-            return aluno;
+            while(rs.next()) {
+            	listaAlunos.add(new Aluno(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDate(6),rs.getBoolean(7),rs.getString(8),rs.getString(9)));
+            }
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {
@@ -67,7 +66,7 @@ public class AlunoDAO {
  
 		
 		
-		return null;
+		return listaAlunos;
 		
 	}
 	
