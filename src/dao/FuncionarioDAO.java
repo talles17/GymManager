@@ -68,6 +68,44 @@ public class FuncionarioDAO {
 		return listaFuncionarios;
 		
 	}
+	
+	public void updateFuncionario(Integer matricula, Funcionario funcionario) throws SQLException {
+		String sql = "UPDATE INTO funcionario (matricula, cpf, pis, nome, sobrenome, sexo, data_nascimento, turno, salario_bruto, id_cargo)VALUES(" + matricula + ",?,?,?,?,?,?,?,?,W) "
+					+ "WHERE matricula = " + matricula;
+		Connection conexao = ConexaoComBD.getConnection();
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setString(2, funcionario.getCpf());
+            stmt.setString(3, funcionario.getPis());
+            stmt.setString(4, funcionario.getNome());
+            stmt.setString(5, funcionario.getSobrenome());
+            stmt.setString(6, funcionario.getSexo());
+            stmt.setDate(7, funcionario.getData_nascimento());
+            stmt.setString(8, funcionario.getTurno());
+            stmt.setFloat(9, funcionario.getSalario_bruto());
+            stmt.setInt(10, funcionario.getCargo());
+
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
+		} finally {
+			ConexaoComBD.closeConnection(conexao, stmt);
+		}
+	}
+	
+	public void deleteFuncionario(Integer matricula) throws SQLException {
+		String sql = "DELETE FROM funcionario WHERE matricula = " + matricula;
+		Connection conexao = ConexaoComBD.getConnection();
+		PreparedStatement stmt = null;
+		try {
+			stmt = conexao.prepareStatement(sql);
+		} finally {
+			ConexaoComBD.closeConnection(conexao, stmt);
+		}
+	}
+	
 	public static String getNomeCargo(Integer matricula ) {
 		String sql = "SELECT c.nome FROM funcionario f JOIN cargo_funcionario c ON f.id_cargo = c.id_cargo WHERE f.matricula = ?";
 		Connection conexao = ConexaoComBD.getConnection();
